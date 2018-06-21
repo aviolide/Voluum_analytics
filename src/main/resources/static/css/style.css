@@ -1,0 +1,74 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+
+.request-box {
+	padding-top: 20px;
+	margin-bottom: 40px;
+}
+.status-act {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: lightgreen;
+	display: inline-block;
+}
+.status-off {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: red;
+	display: inline-block;
+}
+
+th {font-size: 11px;padding: 5px;}
+td {vertical-align: middle;font-size: 13px;padding: 5px;line-height: 1.2;}
+.close {display: inline-block;}
+
+.output {
+	border: 1px solid lightgrey;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.header {
+	padding: 15px 0 50px 0;
+}
+
+
+.btn-box {
+	display: inline-block;
+	vertical-align: top;
+}
+.top {
+	padding-top: 20px;
+}
+
+.btnanalyze {
+	color: green;
+}
+
+#table-container tr td div {
+	height: 16px;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 200px;
+	cursor: pointer;
+}
+#table-container tr td div.sh {
+	height: auto;
+}
+
+.red {color: red;}
+.green {color: green;}
+
+.fixedHeader-floating {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	background-color: white;
+}

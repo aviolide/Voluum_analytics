@@ -1,0 +1,180 @@
+$(document).ready(function(){  
+
+	
+	$('.start').click( function(){
+		
+		$.ajax({
+			url: 'http://localhost:8080/start',
+			cache: false,
+			type : "POST",
+			dataType : 'json',
+			data : $(".request-form").serialize(),
+			success : function(result) {
+				
+				// result
+				console.log(result);
+			},
+			error: function(xhr, resp, text) {
+				console.log(xhr, resp, text);
+			}
+		})
+    });
+	
+	$('.chkplace').click( function(){
+		
+		var cid = $(this).closest("tr").find("cid").text();
+		
+		$.ajax({
+			url: 'http://localhost:8080/check',
+			cache: false,
+			type : "POST",
+			dataType : 'json',
+			data : $(".request-form").serialize() + "&campaign=" + cid,
+			success : function(result) {
+				
+				// result
+				console.log(result);
+				
+			},
+			error: function(xhr, resp, text) {
+				console.log(xhr, resp, text);
+			}
+		})
+    });
+	
+	$('.allchkplace').click( function(){
+		
+		var lines = $("textarea[name='allchkplace']").val().split('\n');
+		campaigns = [];
+		var campaignId;
+		var zones = [];
+		var line = 0
+		for(var i = 0;i < lines.length;i++){
+			var lgh = lines[i].length;
+			if (lgh > 10) {	
+				if (line == 1) {
+					campaigns.push( {"campaignId":campaignId, "zones":zones} );
+					line=0;
+					zones = [];
+					campaignId = lines[i];
+				} else {
+					campaignId = lines[i];
+					line=1;
+				}
+			} else {
+				zones.push(lines[i]);
+				if (i == lines.length-1) {
+					campaigns.push( {"campaignId":campaignId, "zones":zones} );
+				}
+				
+			}
+			
+		}
+		//console.log(campaigns);
+		$.ajax({
+			url: 'http://localhost:8080/allcheck',
+			cache: false,
+			type : "POST",
+			dataType : 'json',
+			data : campaigns,
+			success : function(result) {
+				
+				// result
+				console.log(result);
+				
+			},
+			error: function(xhr, resp, text) {
+				console.log(xhr, resp, text);
+			}
+		})
+    });
+	
+	$('#addtoformulaform').submit( function(e){
+		e.preventDefault();
+		var inp = $("input[name='formula']").val();
+		if (inp.length > 0) {
+			var currformula = $(".currentformula").val();
+			if (currformula.length > 0) {
+				$(".currentformula").val(currformula+';'+inp);
+			} else {
+				$(".currentformula").val(inp);
+			}
+		}
+		
+		var param = $(".currentformula").val();
+		
+		$.ajax({
+			url: 'http://localhost:8080/add_formula',			
+			type : "POST",			
+			data : 'formula='+param,
+			success : function(result) {
+				
+				// result
+				console.log(result);
+				
+			},
+			error: function(xhr, resp, text) {
+				console.log(xhr, resp, text);
+			}
+		})
+    });
+	
+	$('.btnclear').click( function(){
+		
+		$(".currentformula").val("");
+		$("input[name='formula']").val("");
+				
+		$.ajax({
+			url: 'http://localhost:8080/clear_formula',
+			cache: false,
+			type : "POST",
+			//dataType : 'json',
+			//data : $(this).serialize(),
+			success : function(result) {
+				
+				// result
+				console.log(result);
+				
+			},
+			error: function(xhr, resp, text) {
+				console.log(xhr, resp, text);
+			}
+		})
+    });
+	
+	
+	
+	
+	
+	$('.btncheckall').click( function(){
+		
+		var currformula = $(".currentformula").val();
+		if (!currformula.length > 0) {
+			alert("Пустая формула!");
+			return false;
+		}
+		
+    });
+	$('.btnchecktoday').click( function(){
+		
+		var currformula = $(".currentformula").val();
+		if (!currformula.length > 0) {
+			alert("Пустая формула!");
+			return false;
+		}
+		
+    });
+	$('.btncheckactive').click( function(){
+		
+		var currformula = $(".currentformula").val();
+		if (!currformula.length > 0) {
+			alert("Пустая формула!");
+			return false;
+		}
+		
+    });
+	
+	
+	
+	
+});
