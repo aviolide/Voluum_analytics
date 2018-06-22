@@ -159,6 +159,19 @@
                 //console.log('index ' + index + ', value: ' + value);
             });
             printTable(outData);
+            printTable(outData);
+            $("#table-container tr td:nth-child(4)").each(function(){
+
+                var txt = $(this).text();
+                $(this).html("<div>"+txt+"</div>");
+            });
+            $("#table-container tr td div").click(function() {
+                if ($(this).hasClass("sh")) {
+                    $(this).removeClass("sh");
+                } else {
+                    $(this).addClass("sh");
+                }
+            })
         }
 
         tableRender(dataSet);
