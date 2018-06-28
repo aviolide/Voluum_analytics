@@ -14,8 +14,8 @@ public class CampaignZonesClearSpringApplication extends SpringBootServletInitia
         SpringApplication.run(CampaignZonesClearSpringApplication.class, args);
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(CampaignZonesClearSpringApplication.class);
-    }
+        @Override
+        protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+            return application.sources(CampaignZonesClearSpringApplication.class);
+        }
 }

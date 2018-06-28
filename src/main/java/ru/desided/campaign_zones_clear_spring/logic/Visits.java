@@ -28,7 +28,12 @@ public class Visits {
             Date date = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             simpleDateFormat.setTimeZone(TimeZone.getTimeZone("EST"));
-            String dateNow = simpleDateFormat.format(date);
+
+            Calendar calendarNow = Calendar.getInstance();
+            calendarNow.setTime(date);
+            calendarNow.add(Calendar.DAY_OF_MONTH, 1);
+            String dateNow = simpleDateFormat.format(calendarNow.getTime());
+
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
             if (authProp.getLogin().getMonth() != null) {

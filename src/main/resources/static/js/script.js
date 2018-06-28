@@ -1,6 +1,6 @@
 $(document).ready(function(){
-var BASE_URL='/campaign_zones_clear_spring';
-    // var BASE_URL='';
+// var BASE_URL='/campaign_zones_clear_spring';
+    var BASE_URL='';
 
 	$('.start').click( function(){
 

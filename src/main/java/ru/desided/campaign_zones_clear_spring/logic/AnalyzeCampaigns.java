@@ -67,7 +67,6 @@ public class AnalyzeCampaigns {
             analyzeOfferOsBrowser();
         }
         campaign.setOffersList(tempOfferList);
-        new ObjectMapper().writeValue(new File("files/out"), campaign);
     }
 
     private void analyzeOfferBrowser() throws IOException {
@@ -83,7 +82,7 @@ public class AnalyzeCampaigns {
 
                 for (int x = 0; x < browsersList.getRows().size(); x++) {
                     if (browsersList.getRows().get(x).getVisits().compareTo(new BigDecimal(1000)) == 1 &&
-                            browsersList.getRows().get(x).getClicks().compareTo(new BigDecimal(50)) == 1) {
+                            browsersList.getRows().get(x).getClicks().compareTo(new BigDecimal(30)) == 1) {
 
                         JsonNode node = new ObjectMapper().valueToTree(browsersList.getRows().get(x));
                         JsonParser parser = new ObjectMapper().treeAsTokens(node);
@@ -101,7 +100,6 @@ public class AnalyzeCampaigns {
         }
         List<Offer> finalList = new ArrayList<>(arrayOffer);
         tempOfferList.addAll(finalList);
-        new ObjectMapper().writeValue(new File("files/out"), campaign);
     }
 
     private void analyzeOfferOs() throws IOException {
@@ -117,7 +115,7 @@ public class AnalyzeCampaigns {
 
                 for (int x = 0; x < osList.getRows().size(); x++) {
                     if (osList.getRows().get(x).getVisits().compareTo(new BigDecimal(1000)) == 1 &&
-                            osList.getRows().get(x).getClicks().compareTo(new BigDecimal(50)) == 1) {
+                            osList.getRows().get(x).getClicks().compareTo(new BigDecimal(30)) == 1) {
 
                         JsonNode node = new ObjectMapper().valueToTree(osList.getRows().get(x));
                         JsonParser parser = new ObjectMapper().treeAsTokens(node);
@@ -135,7 +133,6 @@ public class AnalyzeCampaigns {
         }
         List<Offer> finalList = new ArrayList<>(arrayOffer);
         tempOfferList.addAll(finalList);
-        new ObjectMapper().writeValue(new File("files/out"), campaign);
     }
 
     private void analyzeOfferOsBrowser() throws IOException {
@@ -153,7 +150,7 @@ public class AnalyzeCampaigns {
                 for (int x = 0; x < osList.getRows().size(); x++) {
 
                     if (osList.getRows().get(x).getVisits().compareTo(new BigDecimal(1000)) == 1 &&
-                            osList.getRows().get(x).getClicks().compareTo(new BigDecimal(50)) == 1) {
+                            osList.getRows().get(x).getClicks().compareTo(new BigDecimal(10)) == 1) {
                         ObjectMapper objectMapper = new ObjectMapper();
                         SimpleModule module = new SimpleModule();
                         module.addDeserializer(BrowsersList.class, new CustomDeserializer());
@@ -183,7 +180,6 @@ public class AnalyzeCampaigns {
         }
         List<Offer> finalList = new ArrayList<>(arrayOffer);
         tempOfferList.addAll(finalList);
-        new ObjectMapper().writeValue(new File("files/out"), campaign);
     }
 
     private Offer calculateData(BigDecimal days, Offer offer){

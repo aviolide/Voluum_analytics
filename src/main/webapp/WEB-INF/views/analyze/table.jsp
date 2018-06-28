@@ -104,8 +104,8 @@
 <script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
 
 <script type="text/javascript">
-    var BASE_URL = '/campaign_zones_clear_spring';
-    // var BASE_URL = '';
+    // var BASE_URL = '/campaign_zones_clear_spring';
+    var BASE_URL = '';
 	var table;
     var dataSet = JSON.parse(${json});
     console.log(dataSet);

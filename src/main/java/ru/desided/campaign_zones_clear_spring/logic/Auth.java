@@ -46,8 +46,9 @@ public class Auth {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.add(Calendar.DAY_OF_MONTH, -1);
-        DATE = "2017-01-01&to=" + simpleDate.format(date);
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+
+        DATE = "2017-01-01&to=" + simpleDate.format(calendar.getTime());
         System.out.println(DATE);
 
         List<Header> headers = Arrays.asList(
